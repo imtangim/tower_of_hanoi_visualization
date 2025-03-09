@@ -13,7 +13,7 @@ A Flutter web application that visualizes the Tower of Hanoi algorithm and its r
 
 ## How to Use
 
-1. Visit the live demo: https://yourusername.github.io/tower_of_hanoi_visualizer/
+1. Visit the live demo: https://imtangim.github.io/tower_of_hanoi_visualizer/
 2. Click the "Solve" button to start the animation
 3. Use the speed slider to adjust the animation speed
 4. Click "Reset" to reset the puzzle
