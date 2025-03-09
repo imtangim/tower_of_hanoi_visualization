@@ -198,14 +198,18 @@ class _TowerOfHanoiWidgetState extends State<TowerOfHanoiWidget> {
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: isSolving ? null : () => solve(),
-                  child: Text("Solve"),
+                  onPressed: isSolving
+                      ? null
+                      : towers.last.isEmpty
+                          ? () => solve()
+                          : resetGame,
+                  child: towers.last.isEmpty ? Text("Solve") : Text("Reset"),
                 ),
-                SizedBox(width: 10),
-                ElevatedButton(
-                  onPressed: isSolving ? null : resetGame,
-                  child: Text("Reset"),
-                ),
+                // SizedBox(width: 10),
+                // ElevatedButton(
+                //   onPressed: isSolving ? null : resetGame,
+                //   child: Text("Reset"),
+                // ),
                 if (isMobile) ...[
                   SizedBox(width: 10),
                   ElevatedButton(
