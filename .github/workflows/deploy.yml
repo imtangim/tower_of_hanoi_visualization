@@ -1,0 +1,28 @@
+# 2. GitHub Actions workflow file: .github/workflows/deploy.yml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+      - name: Enable Flutter Web
+        run: flutter config --enable-web
+      - name: Get dependencies
+        run: flutter pub get
+      - name: Build Web
+        run: flutter build web --base-href /tower_of_hanoi_visualizer/
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
+          force_orphan: true
